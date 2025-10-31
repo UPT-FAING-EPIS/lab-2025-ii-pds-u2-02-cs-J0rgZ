@@ -1,41 +1,43 @@
-name: Deploy site to GitHub Pages
+name: Actividad01 - Publish DocFX Documentation
 
 on:
   push:
     branches:
-      - main  # o la rama desde la que quieres desplegar
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+      - main
 
 jobs:
-  build:
+  build-and-publish-docs:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Upload _site folder
-        uses: actions/upload-pages-artifact@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          path: _site  # carpeta generada con el contenido del sitio
+          dotnet-version: '8.0.x'
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      - name: Install DocFX
+        run: dotnet tool install -g docfx
 
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Restore and build solutions
+        run: |
+          dotnet build CustomerApp/CustomerApp.sln
+          dotnet build Notifications/Notifications.sln
+
+      # 🧹 Limpieza de salidas previas antes de generar nueva documentación
+      - name: Clean previous DocFX outputs
+        run: rm -rf _site api
+
+      - name: Generate DocFX metadata
+        run: docfx metadata docfx.json
+
+      - name: Build DocFX site
+        run: docfx build docfx.json
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site

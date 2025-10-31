@@ -1,67 +1,63 @@
-name: Release Version
+name: Actividad03 - ReleaseVersion
+
+env:
+  DOTNET_VERSION: '8.0'
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version (semver, e.g. 0.1.1)'
-        required: true
   push:
     tags:
-      - 'v*.*.*'
+      - 'v*' # Solo cuando se crean tags de versión
 
 jobs:
-  build-release:
+  release:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        project: [
-          ./CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj,
-          ./Notifications/Notifications.Domain/Notifications.Domain.csproj
-        ]
-
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-            dotnet-version: 8.0.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Determine version
-        id: v
+      - name: Extract version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Build CustomerApp
         run: |
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            echo "ver=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
-          else
-            tag=${GITHUB_REF#refs/tags/}
-            echo "ver=${tag#v}" >> $GITHUB_OUTPUT
-          fi
+          dotnet restore CustomerApp/CustomerApp.sln
+          dotnet build CustomerApp/CustomerApp.sln --configuration Release --no-restore
 
-      - name: Update csproj version
+      - name: Build Notifications
         run: |
-          ver=${{ steps.v.outputs.ver }}
-          echo "Setting version to $ver"
-          sed -i "s#<Version>.*</Version>#<Version>$ver</Version>#" ${{ matrix.project }}
-          grep -n "<Version>" ${{ matrix.project }}
+          dotnet restore Notifications/Notifications.sln
+          dotnet build Notifications/Notifications.sln --configuration Release --no-restore
 
-      - name: Build Release
-        run: dotnet build ${{ matrix.project }} -c Release
+      - name: Run unit tests CustomerApp
+        run: |
+          dotnet test CustomerApp/CustomerApp.Domain.Tests/CustomerApp.Domain.Tests.csproj --configuration Release --no-build
 
-      - name: Pack
-        run: dotnet pack ${{ matrix.project }} -c Release -o out /p:PackageVersion=${{ steps.v.outputs.ver }} /p:Version=${{ steps.v.outputs.ver }}
+      - name: Run unit tests Notifications
+        run: |
+          dotnet test Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj --configuration Release --no-build
 
-      - name: Create Release
+      - name: Pack CustomerApp.Domain
+        run: |
+          dotnet pack CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj -c Release \
+            --no-build \
+            -p:PackageVersion=${{ steps.get_version.outputs.VERSION }} \
+            -o ./artifacts
+
+      - name: Pack Notifications.Domain
+        run: |
+          dotnet pack Notifications/Notifications.Domain/Notifications.Domain.csproj -c Release \
+            --no-build \
+            -p:PackageVersion=${{ steps.get_version.outputs.VERSION }} \
+            -o ./artifacts
+
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.v.outputs.ver }}
-          name: Release v${{ steps.v.outputs.ver }}
-          draft: false
-          prerelease: false
-          files: |
-            out/*.nupkg
-            out/*.snupkg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: "artifacts/*.nupkg"
+          generate_release_notes: true

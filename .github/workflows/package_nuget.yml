@@ -1,89 +1,80 @@
-name: Package and Publish NuGet
+name: Actividad02 - PackageNuget
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+env:
+  DOTNET_VERSION: '8.0'
 
-permissions:
-  contents: write
-  packages: write
+on: push
 
 jobs:
-  test-and-analyze:
+  release:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        project: [
-          ./CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj,
-          ./Notifications/Notifications.Domain/Notifications.Domain.csproj
-        ]
+    permissions:
+      contents: read
+      packages: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore dependencies
-        run: dotnet restore ${{ matrix.project }}
+      - name: Restore dependencies & Build solutions
+        run: |
+          dotnet restore CustomerApp/CustomerApp.sln
+          dotnet restore Notifications/Notifications.sln
+          dotnet build CustomerApp/CustomerApp.sln --configuration Release
+          dotnet build Notifications/Notifications.sln --configuration Release
 
-      - name: Run unit tests with coverage
-        run: dotnet test ${{ matrix.project }} --collect:"XPlat Code Coverage"
+      - name: Run unit tests and collect results (CustomerApp)
+        run: |
+          dotnet test CustomerApp/CustomerApp.Domain.Tests/CustomerApp.Domain.Tests.csproj --configuration Release --logger trx --results-directory CustomerApp/TestResults
+
+      - name: Run unit tests and collect results (Notifications)
+        run: |
+          dotnet test Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj --configuration Release --logger trx --results-directory Notifications/TestResults
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.project }}
-          path: '**/TestResults/*.trx'
+          name: test-results
+          path: |
+            CustomerApp/TestResults
+            Notifications/TestResults
 
-      - name: Install SonarCloud Scanner
-        run: dotnet tool install --global dotnet-sonarscanner
-
-      - name: Analyze with SonarCloud
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        with:
+          projectBaseDir: .
+          args: >
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Pack nuget package (CustomerApp.Domain)
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
-          dotnet sonarscanner begin /k:"si889_u2lab02" /o:"si889" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-          dotnet build ${{ matrix.project }}
-          dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet pack CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj -c Release \
+            -p:PackageVersion=2025.1001.${{ github.run_number }} \
+            -p:RepositoryUrl=https://github.com/${{ github.repository }} \
+            -p:RepositoryType=git
 
-  package-and-publish:
-    needs: test-and-analyze
-    runs-on: ubuntu-latest
+      - name: Pack nuget package (Notifications.Domain)
+        run: |
+          dotnet pack Notifications/Notifications.Domain/Notifications.Domain.csproj -c Release \
+            -p:PackageVersion=2025.1001.${{ github.run_number }} \
+            -p:RepositoryUrl=https://github.com/${{ github.repository }} \
+            -p:RepositoryType=git
 
-    strategy:
-      matrix:
-        project: [
-          ./CustomerApp/CustomerApp.Domain/CustomerApp.Domain.csproj,
-          ./Notifications/Notifications.Domain/Notifications.Domain.csproj
-        ]
+      - name: nuget sources
+        run: dotnet nuget list source
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Push nuget package to GitHub Packages (CustomerApp.Domain)
+        run: |
+          dotnet nuget push CustomerApp/CustomerApp.Domain/bin/Release/*.nupkg --skip-duplicate --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
-
-      - name: Restore dependencies
-        run: dotnet restore ${{ matrix.project }}
-
-      - name: Build project
-        run: dotnet build ${{ matrix.project }} --configuration Release
-
-      - name: Pack NuGet package
-        run: dotnet pack ${{ matrix.project }} --configuration Release --output ./packages/${{ matrix.project }}
-
-      - name: Publish NuGet package to GitHub Packages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet nuget push ./packages/${{ matrix.project }}/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key "${{ secrets.GITHUB_TOKEN }}"
+      - name: Push nuget package to GitHub Packages (Notifications.Domain)
+        run: |
+          dotnet nuget push Notifications/Notifications.Domain/bin/Release/*.nupkg --skip-duplicate --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
