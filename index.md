@@ -1,10 +1,20 @@
-# Documentación del Proyecto
+---
+_layout: landing
+---
 
-Bienvenido a la documentación del proyecto. Aquí encontrarás información detallada sobre los módulos y componentes de los proyectos **CustomerApp** y **Notifications**.
+# Bienvenido a la documentación del repositorio
 
-## Contenido
+Este sitio contiene la documentación técnica y de pruebas de los proyectos:
 
-- [CustomerApp](CustomerApp/disenio.html)
-- [Notifications](Notifications/disenio.html)
+- **CustomerApp**: Gestión y registro de clientesss
+- **Notifications**: Envío de mensajes por Email y SMS
 
-Consulta los enlaces anteriores para obtener más detalles sobre cada módulo.
+## CustomerApp
+
+- [Diagrama de Clases CustomerApp](CustomerApp/disenio.md)
+- [API CustomerApp](api/CustomerApp.Domain/CustomerApp.Domain.html)
+
+## Notifications
+
+- [Diagrama de Clases Notifications](Notifications/disenio.md)
+- [API Notifications](api/Notifications.Domain/Notifications.Domain.html)

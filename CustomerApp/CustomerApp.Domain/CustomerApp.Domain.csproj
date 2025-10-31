@@ -1,16 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>CustomerAppDomainU202</PackageId>
-    <Version>1.0.0</Version>
-    <Authors>UPT-FAING-EPIS</Authors>
-    <Company>UPT</Company>
-    <Description>Domain logic for CustomerApp</Description>
-    <PackageTags>CustomerApp;Domain</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>CustomerApp_ccabrerastu</PackageId>
+    <RepositoryUrl>https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>

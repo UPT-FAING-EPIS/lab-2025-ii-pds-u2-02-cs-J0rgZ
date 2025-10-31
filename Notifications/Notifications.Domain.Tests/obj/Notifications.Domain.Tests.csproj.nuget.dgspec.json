@@ -1,33 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj": {}
+    "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain.Tests\\Notifications.Domain.Tests.csproj": {}
   },
   "projects": {
-    "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj": {
+    "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain.Tests\\Notifications.Domain.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain.Tests\\Notifications.Domain.Tests.csproj",
         "projectName": "Notifications.Domain.Tests",
-        "projectPath": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain.Tests/Notifications.Domain.Tests.csproj",
-        "packagesPath": "/Users/n/.nuget/packages/",
-        "outputPath": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain.Tests/obj/",
+        "projectPath": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain.Tests\\Notifications.Domain.Tests.csproj",
+        "packagesPath": "C:\\Users\\kbrera\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/n/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\kbrera\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain/Notifications.Domain.csproj": {
-                "projectPath": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain/Notifications.Domain.csproj"
+              "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain\\Notifications.Domain.csproj": {
+                "projectPath": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain\\Notifications.Domain.csproj"
               }
             }
           }
@@ -41,32 +41,31 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.12.0, )"
+              "version": "[17.8.0, )"
             },
             "NUnit": {
               "target": "Package",
-              "version": "[4.2.2, )"
+              "version": "[3.14.0, )"
             },
             "NUnit.Analyzers": {
               "target": "Package",
-              "version": "[4.4.0, )"
+              "version": "[3.9.0, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[4.6.0, )"
+              "version": "[4.5.0, )"
             },
             "coverlet.collector": {
               "target": "Package",
-              "version": "[6.0.2, )"
+              "version": "[6.0.0, )"
             }
           },
           "imports": [
@@ -85,31 +84,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain/Notifications.Domain.csproj": {
+    "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain\\Notifications.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain/Notifications.Domain.csproj",
-        "projectName": "NotificationsDomainU202",
-        "projectPath": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain/Notifications.Domain.csproj",
-        "packagesPath": "/Users/n/.nuget/packages/",
-        "outputPath": "/Users/n/Desktop/lab-2025-ii-pds-u2-02-cs-nkmelndz/Notifications/Notifications.Domain/obj/",
+        "projectUniqueName": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain\\Notifications.Domain.csproj",
+        "projectName": "Notifications.Domain",
+        "projectPath": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain\\Notifications.Domain.csproj",
+        "packagesPath": "C:\\Users\\kbrera\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kbrera\\Desktop\\lab-2025-ii-pds-u2-02-cs-ccabrerastu\\Notifications\\Notifications.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/n/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\kbrera\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -122,12 +121,11 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -144,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

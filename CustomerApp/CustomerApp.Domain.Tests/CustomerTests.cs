@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 
 namespace CustomerApp.Domain.Tests
 {
@@ -9,8 +9,8 @@ namespace CustomerApp.Domain.Tests
         {
             //Step1: Create an Instance of Customer Class
             Customer customer = Customer.Create(
-                "Jose Cuadros", "p.cuadros@gmail.com", "1234567890", "Tacnamandapio", "str0ng.pa55");
-
+                "Jose Cuadros","p.cuadros@gmail.com","1234567890","Tacnamandapio","str0ng.pa55");
+            
             //Step2: Validate the Customer
             Validator validator = new Validator();
             bool IsValid = validator.ValidateCustomer(customer);
@@ -20,14 +20,14 @@ namespace CustomerApp.Domain.Tests
             //Step4: Send the Registration Email to the Customer
             EmailService email = new EmailService();
             bool IsEmailed = email.SendRegistrationEmail(customer);
-
-            Assert.That(customer, Is.Not.Null);
-            Assert.That(dataAccessLayer.Customers.Count, Is.GreaterThan(0));
-            Assert.That(IsValid, Is.True);
-            Assert.That(IsSaved, Is.True);
-            Assert.That(IsEmailed, Is.True);
+            
+            Assert.IsNotNull(customer);
+            Assert.Greater(dataAccessLayer.Customers.Count,0);
+            Assert.IsTrue(IsValid);
+            Assert.IsTrue(IsSaved);
+            Assert.IsTrue(IsEmailed);
         }
-        [Test]
+                [Test]
         public void GivenANewCustomer_WhenRegister_ThenIsRegisteredSuccessfully()
         {
             //Step1: Create an Instance of Customer Class
@@ -35,8 +35,8 @@ namespace CustomerApp.Domain.Tests
                 "Jose Cuadros","p.cuadros@gmail.com","1234567890","Tacnamandapio","str0ng.pa55");
             //Step2: Using Facade Class
             bool IsRegistered = new CustomerRegistration().RegisterCustomer(customer);
-            Assert.That(customer, Is.Not.Null);
-            Assert.That(IsRegistered, Is.True);
-        } 
+            Assert.IsNotNull(customer);
+            Assert.IsTrue(IsRegistered);
+        }     
     }
 }

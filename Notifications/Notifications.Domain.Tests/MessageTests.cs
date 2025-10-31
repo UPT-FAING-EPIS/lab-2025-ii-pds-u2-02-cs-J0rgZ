@@ -11,8 +11,8 @@ namespace Notifications.Domain.Tests
             string Message = "Este es un mensaje bien pero bien largoooooooooooooooooooooooo.";
             AbstractMessage longMessage = new LongMessage(new EmailMessageSender());
             var confirm = longMessage.SendMessage(Message);
-            Assert.That(!string.IsNullOrEmpty(confirm), Is.True);
-            Assert.That(confirm.Contains(Message), Is.True);
+            Assert.IsTrue(!string.IsNullOrEmpty(confirm));
+            Assert.IsTrue(confirm.Contains(Message));
         }
         [Test]
         public void GivenShortMessage_WhenSend_ThenSMSIsTriggered()
@@ -20,8 +20,8 @@ namespace Notifications.Domain.Tests
             string Message = "Este es un mensaje corto.";
             AbstractMessage shortMessage = new ShortMessage(new SmsMessageSender());
             var confirm = shortMessage.SendMessage(Message);
-            Assert.That(!string.IsNullOrEmpty(confirm), Is.True);
-            Assert.That(confirm.Contains(Message), Is.True);
+            Assert.IsTrue(!string.IsNullOrEmpty(confirm));
+            Assert.IsTrue(confirm.Contains(Message));
         }
         [Test]
         public void GivenLargeMessage_WhenSendinSMS_ThenOccursException()

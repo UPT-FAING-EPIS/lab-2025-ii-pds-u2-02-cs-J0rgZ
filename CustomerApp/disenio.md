@@ -1,9 +1,6 @@
 ```mermaid.md
 classDiagram
 
-class CustomerRegistration
-CustomerRegistration : +RegisterCustomer() Boolean
-
 class Customer
 Customer : +String Name
 Customer : +String Email
