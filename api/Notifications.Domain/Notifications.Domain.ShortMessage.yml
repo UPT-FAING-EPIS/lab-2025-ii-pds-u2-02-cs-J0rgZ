@@ -19,7 +19,7 @@ items:
     remote:
       path: Notifications/Notifications.Domain/ShortMessage.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: ShortMessage
     path: Notifications/Notifications.Domain/ShortMessage.cs
     startLine: 2
@@ -56,7 +56,7 @@ items:
     remote:
       path: Notifications/Notifications.Domain/ShortMessage.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: LARGE_ERROR_MESSAGE
     path: Notifications/Notifications.Domain/ShortMessage.cs
     startLine: 4
@@ -83,7 +83,7 @@ items:
     remote:
       path: Notifications/Notifications.Domain/ShortMessage.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: .ctor
     path: Notifications/Notifications.Domain/ShortMessage.cs
     startLine: 5
@@ -115,7 +115,7 @@ items:
     remote:
       path: Notifications/Notifications.Domain/ShortMessage.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: SendMessage
     path: Notifications/Notifications.Domain/ShortMessage.cs
     startLine: 9

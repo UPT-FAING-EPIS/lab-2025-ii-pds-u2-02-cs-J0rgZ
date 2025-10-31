@@ -17,7 +17,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/EmailService.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: EmailService
     path: CustomerApp/CustomerApp.Domain/EmailService.cs
     startLine: 5
@@ -52,7 +52,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/EmailService.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: SendRegistrationEmail
     path: CustomerApp/CustomerApp.Domain/EmailService.cs
     startLine: 7

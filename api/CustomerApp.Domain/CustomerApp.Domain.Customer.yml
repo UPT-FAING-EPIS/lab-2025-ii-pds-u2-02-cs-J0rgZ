@@ -22,7 +22,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: Customer
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 2
@@ -57,7 +57,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: Name
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 4
@@ -86,7 +86,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: Email
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 5
@@ -115,7 +115,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: MobileNumber
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 6
@@ -144,7 +144,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: Address
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 7
@@ -173,7 +173,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: Password
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 8
@@ -202,7 +202,7 @@ items:
     remote:
       path: CustomerApp/CustomerApp.Domain/Customer.cs
       branch: main
-      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-ccabrerastu.git
+      repo: https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-02-cs-J0rgZ.git
     id: Create
     path: CustomerApp/CustomerApp.Domain/Customer.cs
     startLine: 9
