@@ -72,9 +72,11 @@ jobs:
         run: dotnet nuget list source
 
       - name: Push nuget package to GitHub Packages (CustomerApp.Domain)
+        if: false 
         run: |
           dotnet nuget push CustomerApp/CustomerApp.Domain/bin/Release/*.nupkg --skip-duplicate --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push nuget package to GitHub Packages (Notifications.Domain)
+        if: false
         run: |
           dotnet nuget push Notifications/Notifications.Domain/bin/Release/*.nupkg --skip-duplicate --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
